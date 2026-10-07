@@ -1,0 +1,111 @@
+@import "variables";
+@import "mixins";
+
+* {
+    box-sizing: border-box;
+}
+
+.gridwrapper {
+    overflow: auto;
+    position: relative;
+    height: 250px;
+}
+
+.gridcontent {
+    @include grid-column;
+    @include background($grid-gray);
+}
+
+// Grid container chinh
+.gridcontainer {
+
+    // Header
+    .header {
+        height: 90px;
+
+        .gridcontent {
+            width: 100%;
+            background: $purple;
+            border-right-color: transparent;
+        }
+    }
+
+    // Phan noi dung
+    .content {
+        height: 230px;
+
+        .gridcontent {
+            background: $white;
+            border: none;
+
+            // Cot menu ben trai
+            &.left {
+                width: 25%;
+                padding-top: 15px;
+
+                .menu-item {
+                    background: $blue;
+                    border: none;
+                    width: 100%;
+                    height: 15%;
+                    margin-bottom: 10px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            // Cot ben phai
+            &.right {
+                width: 25%;
+                padding-top: 15px;
+
+                .right-content {
+                    background: $blue;
+                    border: none;
+                    width: 100%;
+                    height: 92%;
+                }
+            }
+        }
+    }
+
+    // Footer
+    .footer {
+        height: 50px;
+
+        .gridcontent {
+            width: 100%;
+            background: $dark-blue;
+            border-right-color: transparent;
+        }
+    }
+
+    // Grid mo phong
+    &.overlay {
+        opacity: 0.1;
+
+        .gridwrapper {
+            height: 370px;
+
+            .gridcontent {
+                background: $white;
+                border-right: 1px solid $border-black;
+
+                &:first-child {
+                    border-left: 1px solid $border-black;
+                }
+            }
+        }
+    }
+}
+
+// Khung chinh
+.main-wrapper {
+    position: absolute;
+    opacity: 0.9;
+    width: auto;
+    left: 8px;
+    right: 10px;
+}
